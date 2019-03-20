@@ -16,24 +16,8 @@ app.set("view engine", "ejs");
 app.use(express.static('public'));
 
 //global variables
-const urlDatabase = {
-  b6UTxQ: { longURL: "https://www.tsn.ca", userID: "aJ48lW" },
-  i3BoGr: { longURL: "https://www.google.ca", userID: "users1" }
-};
-
-const users = { 
-  "user1": {
-    id: "user1", 
-    email: "a@a",
-    password: bcrypt.hashSync("a", 10)
-  },
-  "user2": {
-    id: "user2", 
-    email: "b@b", 
-    password: bcrypt.hashSync("b", 10)
-  }
-};
-
+const urlDatabase = {};
+const users = {}; 
 function generateRandomString() {
   let string = "";
   const options = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
@@ -70,7 +54,7 @@ app.get("/urls", (req, res) => {
   const user = users[req.session["user_id"]];
   if (user) {
     const userUrlDatabase = urlsForUser(user.id);
-    let templateVars = { urls: userUrlDatabase, user: user };
+    const templateVars = { urls: userUrlDatabase, user: user };
     return res.render("urls_index", templateVars);
   }
   else {

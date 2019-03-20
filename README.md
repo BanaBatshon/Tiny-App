@@ -22,4 +22,5 @@
 ## Getting Started
 
 *   Install all dependencies using the `npm install` command.
-*   Run the developnet web server using the `node express_server.js` command.
+*   Run the development web server using the `node express_server.js` command.
+*   Visit localhost:8080 in the browser.
